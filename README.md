@@ -92,6 +92,10 @@ it will install the required gemfile for running the project
 
 ### Usage
 
+```bash
+  rails s
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
