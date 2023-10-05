@@ -1,9 +1,10 @@
 <div id="<%= dom_id user %>" >
-  <h2>_user</h2>
   <div class="user_item" >
     <p>
     <% if !user.photo.blob.nil? %>
-      <%= image_tag user.photo, class:'user_photo', alt:"user avatar" %>
+      <%= image_tag user.photo, class:'user_photo', alt:"user avatar" %>  
+    <% else %>
+      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="user_photo" alt="user avatar" />
     <% end %>
     </p>
     
@@ -21,12 +22,19 @@
 
   </div>
 
-  <p>
-    <strong>Bio:</strong>
-    <%= user.bio %>
-  </p>
 
-  <%= render @posts if !@posts.nil? && !url_for.include?('post') %>
+  <% if !@posts.nil? && !url_for.include?('post') %>
+    <p class="bio">
+      <strong><%= user.name%>'s Bio:</strong>
+      <%= "#{user.bio}. " * 3 %>
+    </p>
 
+    
+    <%# <%= render @posts  %>
+    <%= render user.recent_posts(3)  %>
+    
+  <% end %>
   
 </div>
+
+  
