@@ -30,12 +30,14 @@
 
 
   <div class="comments-container">
-  <% if url_for.match(/posts/) %>
-    <% if url_for.match(/posts\//) %>
-        <%= render post.comments %>
+  <% post.comments.each_with_index do |comment, index|%>
+    <% if url_for.match(/posts/) %>
+      <% if url_for.match(/posts\//) %>
+          <%= render comment %>
       <% else %>
-        <%= render post.recent_comments(5) %>
-    <% end %>  
+        <% if index < 5 %> <%= render comment %> <% end %>        
+      <% end %>  
+    <% end %>
   <% end %>
   </div>
 
